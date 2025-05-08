@@ -1,0 +1,302 @@
+/* #sidebar {
+  width: 250px;
+  transition: all 0.3s;
+}
+
+#sidebar.collapsed {
+  width: 60px;
+}
+
+#sidebar.collapsed .collapse {
+  display: none;
+}
+
+#sidebar.collapsed h5 {
+  display: none;
+}
+
+#sidebar.collapsed a {
+  text-align: center;
+}
+
+.flex-grow-1 {
+  transition: margin-left 0.3s;
+}
+
+.flex-grow-1.sidebar-collapsed {
+  margin-left: 60px;
+}
+
+.flex-grow-1:not(.sidebar-collapsed) {
+  margin-left: 250px;
+}
+
+
+body {
+  min-height: 100vh !important;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+
+
+main {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh !important;
+  height: -webkit-fill-available;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.b-example-divider {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.bi {
+  vertical-align: -.125em;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+.dropdown-toggle { outline: 0; }
+
+.nav-flush .nav-link {
+  border-radius: 0;
+}
+
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  background-color: transparent;
+  border: 0;
+}
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color: #d2f4ea;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, .85);
+}
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  display: inline-flex;
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+  text-decoration: none;
+}
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: #d2f4ea;
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.fw-semibold { font-weight: 600; }
+.lh-tight { line-height: 1.25; }
+
+.sidebar-menu {
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+} */
+
+
+/* Ajusta el contenido del Navbar en la izquierda */
+.navbar .container-fluid {
+  justify-content: flex-start;
+}
+
+/* Ajusta el espacio si el Sidebar está visible */
+.with-sidebar {
+  margin-left: 250px; /* Ancho del Sidebar */
+  /*transition: transform 0.3s ease-in-out;*/
+}
+
+.without-sidebar {
+  margin-left: 0px; /* Ancho del Sidebar */
+  /*transition: transform 0.3s ease-in-out;*/
+}
+
+/* Asegúrate de que el contenido tenga un margen por debajo del Navbar */
+.content {
+  margin-top: 56px; /* Altura del Navbar */
+  padding: 15px;
+}
+
+.sidebar {
+  position: fixed; /* Fija el sidebar */
+  top: 56px; /* Justo debajo del Navbar */
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 56px); /* Ocupa toda la altura restante */
+  /*background-color: #343a40;*/
+  overflow-y: auto; /* Scroll si el contenido excede */
+  transition: transform 0.3s ease-in-out;
+  border-right: 1px solid #6c757d; /* Borde derecho */
+  background-color: rgba(52, 58, 64, 0.95);
+}
+
+.sidebar.show {
+  /*transition: transform 0.3s ease-in-out;*/
+  transform: translateX(0); /* Mostrar */
+}
+
+.sidebar.hide {
+  /*transition: transform 0.3s ease-in-out;*/
+  transform: translateX(-100%); /* Oculto por defecto */
+}
+
+.sidebar .accordion-button {
+  /*background-color: #343a40;*/  
+  --bs-bg-opacity: 0.9;
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  color: white;
+  border: none !important;
+}
+
+.sidebar .accordion-button:not(.collapsed) {
+  /*color: #ffc107;*/ /* Color del texto cuando está abierto */
+  /*background-color: #495057;*/ /* Fondo cuando está abierto */  
+  --bs-bg-opacity: 0.9;
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  border: none !important;
+}
+
+.sidebar .accordion-body {
+  /*background-color: #343a40;*/
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  padding-left: 1rem;
+  border: none !important;
+}
+
+.sidebar .list-group-item {
+  border: none;
+}
+
+.sidebar .accordion-item {
+  border: none !important; /* Elimina el borde alrededor de cada ítem */
+}
+
+.sidebar .accordion-button {
+  box-shadow: none !important; /* Elimina las sombras */
+}
+
+.sidebar .accordion-body {
+  border-top: none !important; /* Asegúrate de que no quede un borde superior */
+}
+
+.sidebar .accordion-item {
+  border-radius: 0 !important; /* Quitar cualquier redondeo en los items */
+}
+
+.sidebar .accordion-button {
+  border-radius: 0 !important; /* Quitar el redondeo en los botones */
+}
+
+.sidebar .accordion-item:first-child .accordion-button {
+  border-top-left-radius: 0 !important; /* Eliminar redondeo de la esquina superior izquierda */
+  border-top-right-radius: 0 !important; /* Eliminar redondeo de la esquina superior derecha */
+}
+
+.sidebar .accordion-item:last-child .accordion-button {
+  border-bottom-left-radius: 0 !important; /* Eliminar redondeo de la esquina inferior izquierda */
+  border-bottom-right-radius: 0 !important; /* Eliminar redondeo de la esquina inferior derecha */
+}
+
+.user-section {
+  position: absolute; /* Fija esta sección al final */
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #343a40; /* Fondo similar al Sidebar */
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria */
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-info i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.user-info span {
+  font-size: 1rem;
+}
+
+.user-section .list-group-item {
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: transparent;
+  border: none;
+  padding: 8px 15px;
+}
+
+.user-section .list-group-item i {
+  margin-right: 10px;
+}
+
+.user-section .list-group-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo al pasar el mouse */
+  cursor: pointer;
+}
+
+/* Estilo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .with-sidebar {
+    margin-left: 0;
+  }
+  
+  .sidebar {
+    position: fixed;
+    left: 0;
+    z-index: 1030;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%); /* Oculto por defecto */
+  }
+
+  .sidebar.show {
+    transform: translateX(0); /* Mostrar */
+  }
+
+  .without-sidebar {
+    margin-left: 0px;
+    transition: transform 0.3s ease-in-out;
+  }
+}
